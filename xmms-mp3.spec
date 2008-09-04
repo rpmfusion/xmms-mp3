@@ -4,7 +4,7 @@
 Summary:	MP3 output plugin for XMMS
 Name:		xmms-mp3
 Version:	1.2.10
-Release: 	6%{?dist}
+Release: 	7%{?dist}
 License:	GPL
 Group:		Applications/Multimedia
 URL:		http://www.xmms.org/
@@ -68,6 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 # --------------------------------------------------------------------
 
 %changelog
+* Thu Sep 04 2008 Xavier Lamien <lxtnow[at]gmail.com> - 1.2.10-7
+- Rebuild against new xmms-lib.
+
 * Sun Aug 03 2008 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info - 1.2.10-6
 - rebuild
 
