@@ -3,12 +3,12 @@
 
 Summary:	MP3 output plugin for XMMS
 Name:		xmms-mp3
-Version:	1.2.10
-Release: 	6%{?dist}
+Version:	1.2.11
+Release: 	2.20071117cvs%{?dist}
 License:	GPL
 Group:		Applications/Multimedia
 URL:		http://www.xmms.org/
-Source:		http://www.xmms.org/files/1.2.x/xmms-%{version}.tar.bz2
+Source:		http://www.xmms.org/files/1.2.x/xmms-%{version}-20071117cvs.tar.gz
 Requires:	xmms-libs = %{xmmsepoch}:%{version}
 BuildRequires:	gtk+-devel glib-devel 
 BuildRequires:	xmms-devel = %{xmmsepoch}:%{version}
@@ -29,7 +29,7 @@ This is the output plugin needed to play MP3 audio files.
 # --------------------------------------------------------------------
 
 %prep
-%setup -q -n xmms-%{version}
+%setup -q -n xmms-%{version}-20071117cvs
 
 # --------------------------------------------------------------------
 
@@ -68,6 +68,12 @@ rm -rf $RPM_BUILD_ROOT
 # --------------------------------------------------------------------
 
 %changelog
+* Tue Sep 09 2008 Paul F. Johnson <paul@all-the-johnsons.co.uk> 1.2.11-2.20071117cvs
+- rebuild against new xmms in rawhide
+
+* Thu Sep 04 2008 Xavier Lamien <lxtnow[at]gmail.com> - 1.2.10-7
+- Rebuild against new xmms-lib.
+
 * Sun Aug 03 2008 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info - 1.2.10-6
 - rebuild
 
