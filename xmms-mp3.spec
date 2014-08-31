@@ -4,7 +4,7 @@
 Summary:	MP3 output plugin for XMMS
 Name:		xmms-mp3
 Version:	1.2.11
-Release: 	5.20071117cvs%{?dist}
+Release: 	6.20071117cvs%{?dist}
 License:	GPL
 Group:		Applications/Multimedia
 URL:		http://www.xmms.org/
@@ -68,6 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 # --------------------------------------------------------------------
 
 %changelog
+* Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 1.2.11-6.20071117cvs
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Sun Mar 03 2013 Nicolas Chauvet <kwizart@gmail.com> - 1.2.11-5.20071117cvs
 - Mass rebuilt for Fedora 19 Features
 
