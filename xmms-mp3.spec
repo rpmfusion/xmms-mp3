@@ -12,6 +12,7 @@ Source:		http://www.xmms.org/files/1.2.x/xmms-%{version}-20071117cvs.tar.gz
 Requires:	xmms-libs = %{xmmsepoch}:%{version}
 BuildRequires:	gtk+-devel
 BuildRequires:	glib-devel
+BuildRequires:	perl
 BuildRequires:	xmms-devel = %{xmmsepoch}:%{version}
 %ifarch x86_64
 BuildRequires:	libtool
@@ -58,6 +59,7 @@ install -p -m 0755 Input/mpg123/.libs/libmpg123.so $RPM_BUILD_ROOT%{inputplugind
 * Sun Oct 16 2016 Leigh Scott <leigh123linux@googlemail.com> - 1.2.11-7.20071117cvs
 - enable ipv6 (rfbz#4181)
 - spec file clean up
+- add buildrequires perl (needed for i686 build)
 
 * Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 1.2.11-6.20071117cvs
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
