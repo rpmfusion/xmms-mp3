@@ -1,73 +1,64 @@
-%define		inputplugindir	%(xmms-config --input-plugin-dir 2>/dev/null)
-%define		xmmsepoch	1
+%global		inputplugindir	%(xmms-config --input-plugin-dir 2>/dev/null)
+%global		xmmsepoch	1
 
 Summary:	MP3 output plugin for XMMS
 Name:		xmms-mp3
 Version:	1.2.11
-Release: 	6.20071117cvs%{?dist}
-License:	GPL
+Release: 	7.20071117cvs%{?dist}
+License:        GPL+
 Group:		Applications/Multimedia
 URL:		http://www.xmms.org/
 Source:		http://www.xmms.org/files/1.2.x/xmms-%{version}-20071117cvs.tar.gz
 Requires:	xmms-libs = %{xmmsepoch}:%{version}
-BuildRequires:	gtk+-devel glib-devel 
+BuildRequires:	gtk+-devel
+BuildRequires:	glib-devel
 BuildRequires:	xmms-devel = %{xmmsepoch}:%{version}
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %ifarch x86_64
-BuildRequires:	libtool 
+BuildRequires:	libtool
 %endif
-
-# --------------------------------------------------------------------
 
 %description
 XMMS is a multimedia (Ogg Vorbis, CDs) player for the X Window System
 with an interface similar to Winamp's. XMMS supports playlists and
-streaming content and has a configurable interface. 
+streaming content and has a configurable interface.
 
 This is the output plugin needed to play MP3 audio files.
 
-# --------------------------------------------------------------------
-
 %prep
 %setup -q -n xmms-%{version}-20071117cvs
-
-# --------------------------------------------------------------------
 
 %build
 %configure \
 %ifarch athlon i686
 	--enable-simd	\
 %endif
-	--enable-kanji --enable-texthack --enable-arts-shared
+        --enable-kanji \
+        --enable-texthack \
+        --enable-arts-shared \
+        --with-pic \
+        --enable-ipv6 \
+        --disable-esd \
+        --disable-static
 
 perl -pi -e 's#\$\(top_builddir\)/libxmms/libxmms.la##g' Input/mpg123/Makefile
 make -C Input/mpg123 \
 %ifarch x86_64
   LIBTOOL=/usr/bin/libtool \
 %endif
-  %{?_smp_mflags} 
-
-# --------------------------------------------------------------------
+  %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{inputplugindir}
 install -p -m 0755 Input/mpg123/.libs/libmpg123.so $RPM_BUILD_ROOT%{inputplugindir}
 
-# --------------------------------------------------------------------
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-# --------------------------------------------------------------------
-
-%files 
-%defattr(-,root,root,-)
+%files
 %{inputplugindir}/libmpg123.so
 
-# --------------------------------------------------------------------
-
 %changelog
+* Sun Oct 16 2016 Leigh Scott <leigh123linux@googlemail.com> - 1.2.11-7.20071117cvs
+- enable ipv6 (rfbz#4181)
+- spec file clean up
+
 * Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 1.2.11-6.20071117cvs
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
